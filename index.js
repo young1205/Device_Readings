@@ -13,3 +13,4 @@ app.use(require('./routes/index.routes'))
 
 // Starting server
 app.listen('1337')
+module.exports = app

@@ -55,14 +55,14 @@ There are initially no device readings stored. To add a device reading
 ```
 curl -i -X POST \
     -H "Content-Type: application/json" \
-    -d '{ "id": "36d5658a-6908-479e-887e-a949ec199272", "readings": [{
-"timestamp": "2021-09-29T16:08:15+01:00",
+    -d '{ "id": "36", "readings": [{
+"timestamp": "2021-09-29",
 "count": 2
 }, {
-"timestamp": "2021-09-29T30:09:15+01:00",
+"timestamp": "2021-09-30",
 "count": 5
 },{
-"timestamp": "2021-09-29T30:09:16+01:00",
+"timestamp": "2021-10-1",
 "count": 5
 }]
  }' \
@@ -71,7 +71,7 @@ curl -i -X POST \
 
 To get information on the device you just added you can use
 ```
-curl -i -X GET http://localhost:1337/api/v1/readings/36d5658a-6908-479e-887e-a949ec199272
+curl -i -X GET http://localhost:1337/api/v1/readings/36
 ```
 
 This endpoint works where id is the desired entry for the device you are looking for
@@ -83,11 +83,11 @@ To add a new device it will need a new id
 ```
 curl -i -X POST \
     -H "Content-Type: application/json" \
-    -d '{ "id": "5555658a-6908-479e-887e-a949ec199272", "readings": [{
-"timestamp": "2021-09-29T16:08:15+01:00",
+    -d '{ "id": "5555", "readings": [{
+"timestamp": "2021-07-02",
 "count": 1
 }, {
-"timestamp": "2021-09-29T30:09:15+01:00",
+"timestamp": "2021-08-12",
 "count": 1
 }]
  }' \
@@ -103,25 +103,14 @@ To test a malformed reading you can try
 ```
 curl -i -X POST \
     -H "Content-Type: application/json" \
-    -d '{ "id": "5555658a-6808-479e-887e-a949ec199272", "readings": [{
-"timestamp": "2021-09-29T16:08:15+01:00",
-"count": 19
+    -d '{ "id": "5555", "readings": [{
+"timestamp": "2021-09-29",
+"count": 15
 }, {
-"timestamp": "2021-09-29T30:09:15+01:00",
+"timestamp": "2021-10-29",
 "count": "a"
 }]
  }' \
     http://localhost:1337/api/v1/readings
 ```
 which will produce an error message.
-
-## Testing
-
-I was not able to get the unit testing working in the specified time. To run the testing you would normally run 
-```
-npm run test
-```
-
-# Summary + Extensions
-
-This project is designed to meet the requirements as outlined but there are several areas that I would improve on. I would get the unit testing working as previously outlined and add testing for each endpoint. I would also add more methods for dealing with malformed entries. For example I was not sure if the id passed was not a valid UUID if it should be rejected. 
