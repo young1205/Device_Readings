@@ -1,7 +1,3 @@
-# Project
-
-This project is designed to solve the `Device Readings Interview Project`. This implements a web API that receives and processes device readings. 
-
 # Setup Instructions
 
 ## Mac + Linux
