@@ -22,6 +22,15 @@ function getReading(id) {
     })
 }
 
+function getReadingTotal(id) {
+    return new Promise((resolve, reject) => {
+        helper.mustBeInArray(readings, id)
+        .then(reading => resolve(reading))
+        .catch(err => reject(err))
+    })
+}
+
+
 function insertReading(newReading) {
     return new Promise((resolve) => {
         // This checks to see if previous readings from the device have been recorded
@@ -63,5 +72,6 @@ function insertReading(newReading) {
 module.exports = {
     insertReading,
     getReadings,
-    getReading 
+    getReading,
+    getReadingTotal 
 }

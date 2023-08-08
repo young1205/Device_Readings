@@ -11,7 +11,7 @@ describe('API Tests', function() {
 
     it.only('should list ALL the readings on GET', function(done) {
       chai.request(server)
-        .get('/api/v1/')
+        .get('/')
         .end(function(err, res){
           res.should.have.status(200);
           done();
