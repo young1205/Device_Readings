@@ -51,23 +51,29 @@ There are initially no device readings stored. To add a device reading
 ```
 curl -i -X POST \
     -H "Content-Type: application/json" \
-    -d '{ "id": "36", "readings": [{
-"timestamp": "2021-09-29",
-"count": 2
-}, {
-"timestamp": "2021-09-30",
-"count": 5
-},{
-"timestamp": "2021-10-1",
-"count": 5
-}]
- }' \
+    -d '{
+    "id": "88",
+    "readings": [
+        {
+            "timestamp": "2021-09-29",
+            "count": 2
+        },
+        {
+            "timestamp": "2021-09-30",
+            "count": 5
+        },
+        {
+            "timestamp": "2021-10-1",
+            "count": 5
+        }
+    ]
+}' \
     http://localhost:1337/api/v1/readings
 ```
 
 To get information on the device you just added you can use
 ```
-curl -i -X GET http://localhost:1337/api/v1/readings/36
+curl -i -X GET http://localhost:1337/api/v1/readings/88
 ```
 
 This endpoint works where id is the desired entry for the device you are looking for
@@ -79,14 +85,19 @@ To add a new device it will need a new id
 ```
 curl -i -X POST \
     -H "Content-Type: application/json" \
-    -d '{ "id": "5555", "readings": [{
-"timestamp": "2021-07-02",
-"count": 1
-}, {
-"timestamp": "2021-08-12",
-"count": 1
-}]
- }' \
+    -d '{
+    "id": "697",
+    "readings": [
+        {
+            "timestamp": "2021-09-29",
+            "count": 2
+        },
+        {
+            "timestamp": "2021-10-1",
+            "count": 5
+        }
+    ]
+}' \
     http://localhost:1337/api/v1/readings
 ```
 
@@ -99,14 +110,19 @@ To test a malformed reading you can try
 ```
 curl -i -X POST \
     -H "Content-Type: application/json" \
-    -d '{ "id": "5555", "readings": [{
-"timestamp": "2021-09-29",
-"count": 15
-}, {
-"timestamp": "2021-10-29",
-"count": "a"
-}]
- }' \
+    -d '{
+    "id": "987",
+    "readings": [
+        {
+            "timestamp": "2021-09-29",
+            "count": 2999
+        },
+        {
+            "timestamp": "2021-10-1",
+            "count": "a"
+        }
+    ]
+}' \
     http://localhost:1337/api/v1/readings
 ```
 which will produce an error message.
